@@ -22,7 +22,7 @@ jobs:
 
         steps:
             - name: Deploy Start Message
-              timeout-minutes: 1
+              #timeout-minutes: 1
               run: |
                 echo "=================="
                 echo "Deploy starting..."

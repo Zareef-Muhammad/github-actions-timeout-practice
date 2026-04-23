@@ -1,0 +1,33 @@
+name: Timeout step and job level practice
+on:
+    workflow_dispatch: 
+
+jobs:
+    docker:
+        name: Docker Build Job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Docker Build
+              run: |
+                echo "=============="
+                echo "Docker Build starting..."
+                sleep 5
+                echo "Docker build completed."
+
+    deploy:
+        name: Deploy Job
+        needs: docker
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy Start Message
+              timeout-minutes: 1
+              run: |
+                echo "=================="
+                echo "Deploy starting..."
+                echo "==================="
+                sleep 6000
+
+            - name: Deploy complete
+              run: |
+                echo "Deploy completed successfully."    
